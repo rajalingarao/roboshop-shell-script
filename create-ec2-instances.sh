@@ -30,7 +30,7 @@ fi
 echo "creating R53 record for $name"
 aws route53 change-resource-record-sets --hosted-zone-id $hosted_zone_id --change-batch '
 {
-    "Comment": "Creating a record set for  '$name'"
+    "Comment": "Creating a record set for  '$name'",
     "Changes": [{
     "Action" : "UPSERT",
     "ResourceRecordSet": {
