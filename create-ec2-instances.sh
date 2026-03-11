@@ -2,7 +2,7 @@
 
 instances=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "web" "dispatch")
 domain_name="lithesh.shop"
-hosted_zone_id="Z012785114HGZTDQ8KSQH"F"
+hosted_zone_id="Z012785114HGZTDQ8KSQH"
 
 for name in ${instances[@]}; do
 if [ $name == "shipping" ] || [ $name == "mysql" ]
@@ -30,7 +30,7 @@ fi
 echo "creating R53 record for $name"
 aws route53 change-resource-record-sets --hosted-zone-id $hosted_zone_id --change-batch '
 {
-    "Comment": "Creating a record set for  '$name'",
+    "Comment": "Creating a record set for  '$name'"
     "Changes": [{
     "Action" : "UPSERT",
     "ResourceRecordSet": {
