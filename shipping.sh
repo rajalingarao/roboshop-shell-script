@@ -81,8 +81,13 @@ VALIDATE $? "Installing Mysql Client"
 mysql -h $MYSQL_HOST -uroot -pRoboShop@1 -e 'use cities;' &>>$LOGFILE
 if [ $? -ne 0 ] 
 then
-  mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>$LOGFILE
-  VALIDATE $? "Loading schema..."
+    mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/db/schema.sql &>>$LOG_FILE
+    VALIDATE $? "Loading Schema data..."
+    mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/db/app-user.sql  &>>$LOG_FILE
+    VALIDATE $? "Loading app user data..."
+    mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/db/master-data.sql &>>$LOG_FILE
+    VALIDATE $? "Loading master data..."
+  VALIDATE $? "Loaded schema..."
 else
   echo -e "Schema already loaded... $Y SKIPPING $N" 
 fi
