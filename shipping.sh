@@ -92,5 +92,6 @@ else
   echo -e "Schema already loaded... $Y SKIPPING $N" 
 fi
 
+
 systemctl restart shipping &>>$LOGFILE
 VALIDATE $? "Restarting shipping"
