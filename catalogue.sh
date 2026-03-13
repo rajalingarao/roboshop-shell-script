@@ -84,7 +84,7 @@ VALIDATE $? "Installing mongo client"
 SCHEMA_EXISTS=$(mongosh --host $MONGO_HOST --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')") &>>$LOGFILE
 if [ $SCHEMA_EXISTS -lt 0 ] 
 then
-  echo "$G Schema does not exists... LOADING $N"
+  echo -e "$G Schema does not exists... LOADING $N"
   mongosh --host $MONGO_HOST < /app/schema/catalogue.js &>>$LOGFILE
   VALIDATE $? "Loading Catalogue data"
 else
