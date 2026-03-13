@@ -48,13 +48,16 @@ else
     echo -e "Roboshop user already created..$Y Skipping $N"
 fi
 
+rm -rf /app &>> $LOGFILE
+VALIDATE $? "clean up existing directory"
+
 mkdir -p /app &>>$LOGFILE
 VALIDATE $? "Creating app directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 VALIDATE $? "Downloading catalogue code"
 
-cd /app
+cd /app  &>>$LOGFILE
 VALIDATE $? "Moving to app directory"
 
 unzip /tmp/catalogue.zip &>>$LOGFILE
