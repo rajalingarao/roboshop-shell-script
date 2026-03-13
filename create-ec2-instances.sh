@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#To create ec2 instances, need to authenticate using 'aws configure'
 instances=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "web" "dispatch")
 domain_name="lithesh.shop"
 hosted_zone_id="Z012785114HGZTDQ8KSQH"
